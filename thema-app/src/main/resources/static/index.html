@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Thema API demo</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+<div style="text-align: center">
+    <img src="./3dime-logo-blue-small.png"/>
+</div>
+<br>
+<br>
+<div style="text-align: center">
+    <label for="word_name"></label><input id="word_name" placeholder="word-name" type="text" value="school"/>
+    <button onclick="getSynonyms()">Synonyms</button>
+    <button onclick="getExamples()">Examples</button>
+</div>
+<br>
+<br>
+<div id="result"></div>
+</body>
+<script>
+
+    function getSynonyms() {
+        const word_name = document.getElementById("word_name").value;
+        const xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "/getSynonyms?word=" + word_name, true);
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                document.getElementById("result").innerHTML = xhttp.responseText;
+            }
+        };
+        xhttp.send();
+    }
+
+
+    function getExamples() {
+        const word_name = document.getElementById("word_name").value;
+        const xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "/getExamples?word=" + word_name, true);
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                document.getElementById("result").innerHTML = xhttp.responseText;
+            }
+        };
+        xhttp.send();
+    }
+</script>
+</html>

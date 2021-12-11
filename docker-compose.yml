@@ -1,0 +1,52 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+version: '3'
+
+#Define services
+services:
+
+  #PostgreSQL Database for the application
+  thema-postgres:
+    image: "postgres:10.4-alpine"
+    restart: always
+    container_name: thema-postgres
+    #Volume mounted for database for the storage
+    volumes:
+      - thema-data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432' # Forward the exposed port 5432 on the container to port 5432 on the host machine
+
+    #Environment variable for DB name, user and password
+    environment:
+      - POSTGRES_DB=thema
+      - POSTGRES_USER=thema
+      - POSTGRES_PASSWORD=thema
+
+  #Back-end Spring Boot Application
+  thema-app:
+    #The docker file in thema-app build the jar and provides the docker image with the following name.
+    build: ./thema-app
+    container_name: thema-app
+
+    #Environment variables for Spring Boot Application.
+    environment:
+      - DB_SERVER=thema-postgres
+      - POSTGRES_DB=thema
+      - POSTGRES_USER=thema
+      - POSTGRES_PASSWORD=thema
+    ports:
+      - '8080:8080' # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    links:
+      - thema-postgres
+
+  #Fron-end Angular Application
+  thema-front:
+    build: ./thema-front
+    container_name: thema-front
+    ports:
+      - '4200:80'
+    links:
+      - thema-app
+
+#Volumes for DB data
+volumes:
+  thema-data:

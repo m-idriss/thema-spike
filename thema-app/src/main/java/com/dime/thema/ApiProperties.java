@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Getter
 @Setter
-@PropertySource("classpath:parameters/wordsapi.properties")
+@PropertySource("classpath:private/wordsapi.properties")
 @ConfigurationProperties(prefix = "wordsapi.host")
 @Component
 public class ApiProperties {

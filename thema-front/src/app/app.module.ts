@@ -9,20 +9,29 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { DevhelpComponent } from './devhelp/devhelp.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DevhelpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatSliderModule,
+    BrowserAnimationsModule,
     MatBadgeModule,
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
-    BrowserAnimationsModule
+    MatInputModule,
+    MatCardModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

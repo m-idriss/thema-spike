@@ -9,5 +9,4 @@ public class ThemaApplication {
     public static void main(String[] args) {
         SpringApplication.run(ThemaApplication.class, args);
     }
-
 }

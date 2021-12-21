@@ -1,5 +1,7 @@
-package com.dime.thema;
+package com.dime.thema.service;
 
+import com.dime.thema.words.ApiClientFactory;
+import com.dime.thema.words.WordsApiResponse;
 import com.google.gson.Gson;
 import com.squareup.okhttp.ResponseBody;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.dime.thema;
+package com.dime.thema.words;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,4 +15,6 @@ public class ApiProperties {
 
     private String url;
     private String key;
+    private String name;
+
 }

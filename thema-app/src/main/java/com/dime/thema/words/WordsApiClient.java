@@ -1,7 +1,10 @@
-package com.dime.thema;
+package com.dime.thema.words;
 
+import com.dime.thema.entity.LogApi;
+import com.dime.thema.service.LogApiService;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 import com.squareup.okhttp.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +15,12 @@ import java.io.IOException;
 public class WordsApiClient implements IApiClient {
 
     private final ApiProperties apiProperties;
+    private final LogApiService logApiService;
 
     @Autowired
-    public WordsApiClient(ApiProperties apiProperties) {
+    public WordsApiClient(ApiProperties apiProperties, LogApiService logApiService) {
         this.apiProperties = apiProperties;
+        this.logApiService = logApiService;
     }
 
     @Override
@@ -37,7 +42,8 @@ public class WordsApiClient implements IApiClient {
                 .addHeader("x-rapidapi-host", apiProperties.getUrl())
                 .addHeader("x-rapidapi-key", apiProperties.getKey())
                 .build();
-
-        return client.newCall(request).execute().body();
+        Response response = client.newCall(request).execute();
+        logApiService.saveResponse(apiProperties.getName(), request.urlString(), response.code());
+        return response.body();
     }
 }

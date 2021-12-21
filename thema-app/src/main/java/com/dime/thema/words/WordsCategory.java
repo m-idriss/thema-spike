@@ -1,4 +1,4 @@
-package com.dime.thema;
+package com.dime.thema.words;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.dime.thema;
+package com.dime.thema.words;
 
 import com.squareup.okhttp.ResponseBody;
 

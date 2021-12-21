@@ -1,4 +1,4 @@
-package com.dime.thema;
+package com.dime.thema.entity;
 
 import lombok.Getter;
 import lombok.Setter;

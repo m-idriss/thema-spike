@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {apiUrl} from "../environments/environment";
+import {environment} from "../environments/environment";
 
 @Component({
   selector: 'app-root',
@@ -23,7 +23,7 @@ export class AppComponent {
 
   onFormSubmit() {
     // Fetch synonyms using your service, e.g. via HTTP request
-    this.http.get<string[]>(apiUrl + '/synonyms/' + this.word)
+    this.http.get<string[]>(environment.apiUrl + '/synonyms/' + this.word)
       .subscribe(
         (data) => {
           this.synonyms = data; // Update the synonyms array with fetched data

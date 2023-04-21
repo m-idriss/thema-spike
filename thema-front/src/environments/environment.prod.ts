@@ -1,7 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: '//oo.3dime.com:32994',
 };
-
-export const apiUrl = '//localhost:8080';
-
 

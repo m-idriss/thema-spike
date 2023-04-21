@@ -4,13 +4,15 @@ import com.google.gson.Gson;
 import com.squareup.okhttp.ResponseBody;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
 @Getter
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class ThemaController {
 
@@ -23,17 +25,18 @@ public class ThemaController {
         this.apiClientFactory = apiClientFactory;
     }
 
-    @GetMapping("/getSynonyms")
-    public String getSynonyms(@RequestParam(value = "word") String word) throws IOException {
-        return getResultFromApi(apiClientFactory.getInstance().getSynonyms(word)).getSynonyms().toString();
+    @GetMapping("/synonyms/{word}")
+    public String getSynonyms(@PathVariable("word") String word) throws IOException {
+        return getGson().toJson(getResultFromApi(apiClientFactory.getInstance().getSynonyms(word)).getSynonyms());
     }
 
-    @GetMapping("/getExamples")
-    public String getExamples(@RequestParam(value = "word") String word) throws IOException {
-        return getResultFromApi(apiClientFactory.getInstance().getExamples(word)).getExamples().toString();
+    @GetMapping("/example/{word}")
+    public String getExamples(@PathVariable("word") String word) throws IOException {
+        return getGson().toJson(getResultFromApi(apiClientFactory.getInstance().getExamples(word)).getExamples());
     }
 
     private WordsApiResponse getResultFromApi(ResponseBody responseBody) throws IOException {
         return getGson().fromJson(responseBody.string(), WordsApiResponse.class);
     }
+
 }

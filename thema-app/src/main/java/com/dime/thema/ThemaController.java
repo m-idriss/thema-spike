@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @Getter
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RestController
 public class ThemaController {
 

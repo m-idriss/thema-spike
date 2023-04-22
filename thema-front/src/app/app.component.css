@@ -64,7 +64,7 @@ mat-toolbar {
 }
 
 .form-field {
-/ flex-grow: 1;
+  flex-grow: 1;
   margin-right: 16px; /* Add margin as needed */
   width: 80%;
 }

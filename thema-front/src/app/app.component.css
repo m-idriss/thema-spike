@@ -27,7 +27,7 @@ mat-toolbar {
 
 /* Highlight Card */
 .example-card {
-  width: 480px; /* Set your desired width */
+  max-width: 480px; /* Set your desired width */
   /* Add margin as needed */
   margin: 32px auto 0;
   background-color: #ffffff; /* Set your desired background color */

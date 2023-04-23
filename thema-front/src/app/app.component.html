@@ -42,22 +42,26 @@
 
     <mat-card-content>
 
-      <div *ngIf="synonyms">
-        <cdk-virtual-scroll-viewport appendOnly itemSize="25" class="example-viewport">
+      <div *ngIf="synonyms" class="example-view">
+        <cdk-virtual-scroll-viewport appendOnly itemSize="10" class="example-viewport">
           <div *cdkVirtualFor="let item of synonyms" class="example-item">{{item}}</div>
+          <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+        </cdk-virtual-scroll-viewport>
+        <cdk-virtual-scroll-viewport appendOnly itemSize="10" class="example-viewport">
+          <div *cdkVirtualFor="let item of synonyms" class="example-item">{{item}}</div>
+          <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
         </cdk-virtual-scroll-viewport>
       </div>
 
       <!-- Display the result -->
       <form (ngSubmit)="onFormSubmit()" class="form-container">
-        <mat-form-field class="form-field">
+        <mat-form-field class="form-field" appearance="fill">
           <input matInput [(ngModel)]="word" name="word" type="text" placeholder="Type your word here">
         </mat-form-field>
         <button mat-raised-button class="submit" color="primary" type="submit">{{submit_label}}</button>
       </form>
     </mat-card-content>
     <mat-card-footer>
-      <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
     </mat-card-footer>
   </mat-card>
 </div>

@@ -22,6 +22,7 @@ mat-toolbar {
 .submit {
   width: 100% !important;
   min-width: unset !important;
+  font-size: 18px;
 }
 
 /* Highlight Card */
@@ -39,15 +40,20 @@ mat-toolbar {
   border-radius: 50%;
 }
 
+.example-view {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .example-viewport {
-  width: 100%;
+  width: 45%;
   height: 200px;
-  margin-top: 8px; /* Add padding as needed */
+  margin: 8px 0; /* Add padding as needed */
   background: #eeeeee; /* Set your desired background color */
 }
 
 .example-item {
-  height: 24px;
   padding: 8px; /* Add padding as needed */
 }
 
@@ -75,6 +81,6 @@ mat-toolbar {
   margin-left: 8px;
 }
 
-.mat-form-field, .submit {
-  font-size: 18px;
+.mat-form-field {
+  font-size: 16px;
 }

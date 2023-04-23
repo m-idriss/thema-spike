@@ -1,0 +1,13 @@
+spring:
+  jpa:
+    open-in-view: true
+  application:
+    name: Thema Application
+  output:
+    ansi:
+      enabled: ALWAYS
+logging:
+  level:
+    root: info
+    org.springframework.web: debug
+    org.hibernate: error

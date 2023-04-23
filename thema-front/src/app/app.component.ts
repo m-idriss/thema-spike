@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {catchError, tap} from 'rxjs/operators';
 import {environment} from "../environments/environment";
 
 @Component({
@@ -9,11 +10,11 @@ import {environment} from "../environments/environment";
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class AppComponent {
-  title = 'thema-front';
-  longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-  from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-  originally bred for hunting.`;
-
+  title = 'Shiba Inu';
+  subtitle = 'Dog Breed';
+  title_h2 = 'Synonyms:'
+  submit_label = 'submit';
+  avatar_url = "https://material.angular.io/assets/img/examples/shiba1.jpg";
   word: string = '';
   synonyms: string[] = [];
 
@@ -24,14 +25,16 @@ export class AppComponent {
   onFormSubmit() {
     // Fetch synonyms using your service, e.g. via HTTP request
     this.http.get<string[]>(environment.apiUrl + '/synonyms/' + this.word)
-      .subscribe(
-        (data) => {
+      .pipe(
+        tap((data) => {
           this.synonyms = data; // Update the synonyms array with fetched data
-        },
-        (error) => {
+        }),
+        catchError((error) => {
           console.error('Error fetching synonyms:', error);
-        }
-      );
+          throw error; // Rethrow the error to propagate it to the error handling downstream
+        })
+      )
+      .subscribe();
   }
 
 }

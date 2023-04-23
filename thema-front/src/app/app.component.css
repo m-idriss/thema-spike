@@ -19,6 +19,11 @@ mat-toolbar {
   margin-right: 16px; /* Add margin as needed */
 }
 
+.submit {
+  width: 100% !important;
+  min-width: unset !important;
+}
+
 /* Ensure full visibility of text inside buttons */
 .mat-icon-button {
   overflow: visible;
@@ -27,7 +32,7 @@ mat-toolbar {
 
 /* Highlight Card */
 .example-card {
-  max-width: 480px; /* Set your desired width */
+  max-width: 400px; /* Set your desired width */
   /* Add margin as needed */
   margin: 32px auto 0;
   background-color: #ffffff; /* Set your desired background color */
@@ -57,16 +62,14 @@ mat-toolbar {
 }
 
 .form-container {
-  display: flex;
   align-items: center;
   margin-top: 16px; /* Add margin as needed */
   width: 100%;
 }
 
 .form-field {
-  flex-grow: 1;
   margin-right: 16px; /* Add margin as needed */
-  width: 80%;
+  width: 100%;
 }
 
 .mat-card-footer {

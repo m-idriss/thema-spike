@@ -43,8 +43,6 @@
     <mat-card-content>
 
       <div *ngIf="synonyms">
-        <h2>{{ title_h2 }}</h2>
-        <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
         <cdk-virtual-scroll-viewport appendOnly itemSize="25" class="example-viewport">
           <div *cdkVirtualFor="let item of synonyms" class="example-item">{{item}}</div>
         </cdk-virtual-scroll-viewport>
@@ -59,6 +57,7 @@
       </form>
     </mat-card-content>
     <mat-card-footer>
+      <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
     </mat-card-footer>
   </mat-card>
 </div>

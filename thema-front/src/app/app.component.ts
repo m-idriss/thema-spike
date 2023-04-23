@@ -12,7 +12,6 @@ import {environment} from "../environments/environment";
 export class AppComponent {
   title = 'Shiba Inu';
   subtitle = 'Dog Breed';
-  title_h2 = 'Synonyms:'
   submit_label = 'submit';
   avatar_url = "https://material.angular.io/assets/img/examples/shiba1.jpg";
   word: string = '';

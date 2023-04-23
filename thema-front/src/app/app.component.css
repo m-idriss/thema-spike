@@ -29,7 +29,7 @@ mat-toolbar {
 .example-card {
   max-width: 400px; /* Set your desired width */
   /* Add margin as needed */
-  margin: 32px auto 0;
+  margin: 8px auto 0;
   background-color: #ffffff; /* Set your desired background color */
 }
 
@@ -54,7 +54,7 @@ mat-toolbar {
 }
 
 .example-item {
-  padding: 8px; /* Add padding as needed */
+  padding: 2px 8px; /* Add padding as needed */
 }
 
 .form-container {

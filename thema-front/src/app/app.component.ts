@@ -16,17 +16,26 @@ export class AppComponent {
   avatar_url = "https://material.angular.io/assets/img/examples/shiba1.jpg";
   word: string = '';
   synonyms: string[] = [];
+  example: string = '';
+  error: string = '';
+
 
   constructor(private http: HttpClient) {
   }
 
 
   onFormSubmit() {
+    this.error = '';
     // Fetch synonyms using your service, e.g. via HTTP request
     this.http.get<string[]>(environment.apiUrl + '/synonyms/' + this.word)
       .pipe(
         tap((data) => {
-          this.synonyms = data; // Update the synonyms array with fetched data
+          if (data == null) {
+            this.error = 'Error fetching synonyms:';
+          } else {
+            this.synonyms = data; // Update the synonyms array with fetched data
+            this.example = "data"; // Update the synonyms array with fetched data
+          }
         }),
         catchError((error) => {
           console.error('Error fetching synonyms:', error);

@@ -11,5 +11,5 @@ public enum WordsCategory {
     SYNONYMS("synonyms"),
     EXAMPLES("examples");
 
-    private String name;
+    private final String name;
 }

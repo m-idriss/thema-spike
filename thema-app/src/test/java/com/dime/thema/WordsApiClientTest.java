@@ -1,5 +1,6 @@
 package com.dime.thema;
 
+import com.dime.thema.feature_word.model.WordResponse;
 import com.google.gson.Gson;
 import com.squareup.okhttp.ResponseBody;
 import lombok.SneakyThrows;
@@ -29,7 +30,7 @@ class WordsApiClientTest {
     void getSynonyms() {
 
         ResponseBody responseBody = wordsApiClient.getSynonyms("school");
-        WordsApiResponse entity = new Gson().fromJson(responseBody.string(), WordsApiResponse.class);
+        WordResponse entity = new Gson().fromJson(responseBody.string(), WordResponse.class);
         String result = entity.getSynonyms().toString();
         assertThat(result).contains(Arrays.asList("shoal", "school day", "schooltime", "civilise", "civilize", "cultivate", "educate", "train", "schooling", "schoolhouse"));
     }

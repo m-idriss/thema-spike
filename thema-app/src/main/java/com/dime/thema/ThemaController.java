@@ -1,5 +1,6 @@
 package com.dime.thema;
 
+import com.dime.thema.feature_word.model.WordResponse;
 import com.google.gson.Gson;
 import com.squareup.okhttp.ResponseBody;
 import lombok.Getter;
@@ -35,8 +36,8 @@ public class ThemaController {
         return getGson().toJson(getResultFromApi(apiClientFactory.getInstance().getExamples(word)).getExamples());
     }
 
-    private WordsApiResponse getResultFromApi(ResponseBody responseBody) throws IOException {
-        return getGson().fromJson(responseBody.string(), WordsApiResponse.class);
+    private WordResponse getResultFromApi(ResponseBody responseBody) throws IOException {
+        return getGson().fromJson(responseBody.string(), WordResponse.class);
     }
 
 }

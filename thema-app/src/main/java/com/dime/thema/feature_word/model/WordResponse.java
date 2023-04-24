@@ -1,4 +1,4 @@
-package com.dime.thema;
+package com.dime.thema.feature_word.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +7,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class WordsApiResponse {
+public class WordResponse {
 
     private String word;
 

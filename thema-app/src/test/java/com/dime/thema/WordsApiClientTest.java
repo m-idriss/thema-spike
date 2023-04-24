@@ -2,8 +2,8 @@ package com.dime.thema;
 
 import com.dime.thema.feature_word.model.WordResponse;
 import com.google.gson.Gson;
-import com.squareup.okhttp.ResponseBody;
 import lombok.SneakyThrows;
+import okhttp3.ResponseBody;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

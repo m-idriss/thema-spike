@@ -2,8 +2,8 @@ package com.dime.thema;
 
 import com.dime.thema.feature_word.model.WordResponse;
 import com.google.gson.Gson;
-import com.squareup.okhttp.ResponseBody;
 import lombok.Getter;
+import okhttp3.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,6 +1,6 @@
 package com.dime.thema;
 
-import com.squareup.okhttp.ResponseBody;
+import okhttp3.ResponseBody;
 
 import java.io.IOException;
 

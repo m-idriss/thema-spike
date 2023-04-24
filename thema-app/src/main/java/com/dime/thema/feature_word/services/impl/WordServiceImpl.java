@@ -6,10 +6,10 @@ import com.dime.thema.feature_word.exception.ResourceNotFoundException;
 import com.dime.thema.feature_word.model.WordResponse;
 import com.dime.thema.feature_word.services.WordService;
 import com.google.gson.Gson;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
 import lombok.AllArgsConstructor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -33,6 +33,7 @@ public class WordServiceImpl implements WordService {
         Response response = client.newCall(request).execute();
 
         if (response.isSuccessful()) {
+            assert response.body() != null;
             return new Gson().fromJson(response.body().string(), WordResponse.class);
         } else {
             throw new ResourceNotFoundException(WordsCategory.SYNONYMS.getName(), word);

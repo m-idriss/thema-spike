@@ -9,5 +9,5 @@ RUN mvn -f pom.xml clean package
 ### STAGE 2: Run ###
 FROM openjdk:17-slim
 COPY --from=build /workspace/target/*.jar app.jar
-EXPOSE 8083
+EXPOSE 8080
 ENTRYPOINT ["java","-jar","app.jar"]

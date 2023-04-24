@@ -54,7 +54,7 @@ the definition of its Docker container can be found in
     volumes:
       - thema-data:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - 5433:5433
     environment:
       - POSTGRES_DB:thema
       - POSTGRES_USER:thema

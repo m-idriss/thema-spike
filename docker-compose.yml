@@ -13,7 +13,7 @@ services:
     volumes:
       - thema-data:/var/lib/postgresql/data
     ports:
-      - '5432:5432' # Forward the exposed port 5432 on the container to port 5432 on the host machine
+      - '5433:5433' # Forward the exposed port 5433 on the container to port 5433 on the host machine
 
     #Environment variable for DB name, user and password
     environment:
@@ -34,7 +34,7 @@ services:
       - POSTGRES_USER=thema
       - POSTGRES_PASSWORD=thema
     ports:
-      - '8080:8080' # Forward the exposed port 8080 on the container to port 8080 on the host machine
+      - '8083:8083' # Forward the exposed port 8083 on the container to port 8083 on the host machine
     links:
       - thema-postgres
 

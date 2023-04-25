@@ -13,13 +13,13 @@ services:
     volumes:
       - thema-data:/var/lib/postgresql/data
     ports:
-      - '5432:5432' # Forward the exposed port 5432 on the container to port 5432 on the host machine
+      - '${DB_PORT}:5432' # Forward the exposed port ${DB_PORT} on the container to port 5432 on the host machine
 
     #Environment variable for DB name, user and password
     environment:
-      - POSTGRES_DB=thema
-      - POSTGRES_USER=thema
-      - POSTGRES_PASSWORD=thema
+      - POSTGRES_DB=${POSTGRESQL_DB_NAME}
+      - POSTGRES_USER=${POSTGRESQL_DB_USER}
+      - POSTGRES_PASSWORD=${POSTGRESQL_DB_PASSWORD}
 
   #Back-end Spring Boot Application
   thema-app:
@@ -30,11 +30,11 @@ services:
     #Environment variables for Spring Boot Application.
     environment:
       - DB_SERVER=thema-postgres
-      - POSTGRES_DB=thema
-      - POSTGRES_USER=thema
-      - POSTGRES_PASSWORD=thema
+      - POSTGRES_DB=${POSTGRESQL_DB_NAME}
+      - POSTGRES_USER=${POSTGRESQL_DB_USER}
+      - POSTGRES_PASSWORD=${POSTGRESQL_DB_PASSWORD}
     ports:
-      - '8080:8080' # Forward the exposed port 8080 on the container to port 8080 on the host machine
+      - '${SPRING_PORT}:8080' # Forward the exposed port ${SPRING_PORT} on the container to port 8080 on the host machine
     links:
       - thema-postgres
 
@@ -43,7 +43,7 @@ services:
     build: ./thema-front
     container_name: thema-front
     ports:
-      - '4200:80'
+      - '${ANGULAR_PORT}:80'
     links:
       - thema-app
 

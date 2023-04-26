@@ -17,6 +17,7 @@ public class WebConfig {
                 registry.addMapping("/**")
                         .allowedOrigins("${DOMAIN}")
                         .allowedOrigins("${DOMAIN}:${ANGULAR_PORT}")
+                        .allowedOrigins("http://oo.3dime.com:4200")
                         .allowedOrigins("http://localhost:4200")
                         .allowedMethods("GET");
             }

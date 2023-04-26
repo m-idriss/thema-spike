@@ -1,9 +1,8 @@
 package com.dime.thema;
 
 import com.dime.thema.feature_word.model.WordResponse;
-import com.google.gson.Gson;
+import com.dime.thema.feature_word.services.impl.WordServiceImpl;
 import lombok.SneakyThrows;
-import okhttp3.ResponseBody;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class WordsApiClientTest {
 
     @Autowired
-    WordsApiClient wordsApiClient;
+    WordServiceImpl wordServiceImpl;
 
     @BeforeEach
     void setUp() {
@@ -29,9 +28,8 @@ class WordsApiClientTest {
     @Test
     void getSynonyms() {
 
-        ResponseBody responseBody = wordsApiClient.getSynonyms("school");
-        WordResponse entity = new Gson().fromJson(responseBody.string(), WordResponse.class);
-        String result = entity.getSynonyms().toString();
+        WordResponse wordResponse = wordServiceImpl.getSynonymsForWord("school");
+        String result = wordResponse.getSynonyms().toString();
         assertThat(result).contains(Arrays.asList("shoal", "school day", "schooltime", "civilise", "civilize", "cultivate", "educate", "train", "schooling", "schoolhouse"));
     }
 }

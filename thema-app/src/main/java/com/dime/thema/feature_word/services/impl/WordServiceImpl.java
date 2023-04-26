@@ -1,7 +1,5 @@
 package com.dime.thema.feature_word.services.impl;
 
-import com.dime.thema.ApiProperties;
-import com.dime.thema.WordsCategory;
 import com.dime.thema.feature_word.exception.ResourceNotFoundException;
 import com.dime.thema.feature_word.model.WordResponse;
 import com.dime.thema.feature_word.services.WordService;
@@ -18,13 +16,13 @@ import java.io.IOException;
 @AllArgsConstructor
 public class WordServiceImpl implements WordService {
 
-    private final ApiProperties apiProperties;
+    private final WordsApiProperties apiProperties;
 
     @Override
     public WordResponse getSynonymsForWord(String word) throws ResourceNotFoundException, IOException {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("https://" + apiProperties.getUrl() + "/words/" + word + "/" + WordsCategory.SYNONYMS.getName())
+                .url("https://" + apiProperties.getUrl() + "/words/" + word + "/" + WordsApiProperties.Category.SYNONYMS.getName())
                 .get()
                 .addHeader("x-rapidapi-host", apiProperties.getUrl())
                 .addHeader("x-rapidapi-key", apiProperties.getKey())
@@ -36,7 +34,7 @@ public class WordServiceImpl implements WordService {
             assert response.body() != null;
             return new Gson().fromJson(response.body().string(), WordResponse.class);
         } else {
-            throw new ResourceNotFoundException(WordsCategory.SYNONYMS.getName(), word);
+            throw new ResourceNotFoundException(WordsApiProperties.Category.SYNONYMS.getName(), word);
         }
     }
 }

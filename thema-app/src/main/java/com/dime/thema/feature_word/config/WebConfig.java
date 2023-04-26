@@ -15,10 +15,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(@NotNull CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("${DOMAIN}")
-                        .allowedOrigins("${DOMAIN}:${ANGULAR_PORT}")
-                        .allowedOrigins("http://oo.3dime.com:4200")
-                        .allowedOrigins("http://localhost:4200")
+                        .allowedOrigins("*")
                         .allowedMethods("GET");
             }
         };

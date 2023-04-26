@@ -15,7 +15,8 @@ public class WebConfig {
             @Override
             public void addCorsMappings(@NotNull CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("${DOMAIN}:${ANGULAR_PORT}")
+                        .allowedOrigins("*")
+                        .allowedHeaders("*")
                         .allowedMethods("GET");
             }
         };

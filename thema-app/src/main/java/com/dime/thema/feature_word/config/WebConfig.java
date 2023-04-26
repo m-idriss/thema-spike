@@ -12,8 +12,9 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(@NotNull CorsRegistry registry) {
         WebMvcConfigurer.super.addCorsMappings(registry);
         registry.addMapping("/**")
-                .allowedOrigins("//localhost:8080")
-                .allowedOrigins("${DOMAIN}:${SPRING_PORT}")
+                .allowedOrigins("//localhost:${ANGULAR_PORT}")
+                .allowedOrigins("${DOMAIN}:${ANGULAR_PORT}")
+                .allowedOrigins("${DOMAIN}")
                 .allowedMethods("GET", "POST", "DELETE", "PUT", "OPTIONS");
     }
 }

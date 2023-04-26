@@ -11,3 +11,6 @@ logging:
     root: info
     org.springframework.web: debug
     org.hibernate: error
+springdoc:
+  api-docs:
+    path: /api-docs

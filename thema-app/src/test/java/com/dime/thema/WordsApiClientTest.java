@@ -27,7 +27,6 @@ class WordsApiClientTest {
     @SneakyThrows
     @Test
     void getSynonyms() {
-
         WordResponse wordResponse = wordServiceImpl.getSynonymsForWord("school");
         String result = wordResponse.getSynonyms().toString();
         assertThat(result).contains(Arrays.asList("shoal", "school day", "schooltime", "civilise", "civilize", "cultivate", "educate", "train", "schooling", "schoolhouse"));

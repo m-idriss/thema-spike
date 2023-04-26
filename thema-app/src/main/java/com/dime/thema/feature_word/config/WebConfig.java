@@ -12,8 +12,8 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(@NotNull CorsRegistry registry) {
         WebMvcConfigurer.super.addCorsMappings(registry);
         registry.addMapping("/**")
-                .allowedOrigins("//localhost")
-                .allowedOrigins("${DOMAIN}")
+                .allowedOrigins("//localhost:8080")
+                .allowedOrigins("${DOMAIN}:${SPRING_PORT}")
                 .allowedMethods("GET", "POST", "DELETE", "PUT", "OPTIONS");
     }
 }

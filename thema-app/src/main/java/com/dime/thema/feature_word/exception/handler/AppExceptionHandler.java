@@ -16,7 +16,7 @@ public class AppExceptionHandler {
         ResponseMessage responseMessage = ResponseMessage.builder()
                 .message(e.getMessage())
                 .timestamp(new Date())
-                .code(404)
+                .code(HttpStatus.NOT_FOUND.value())
                 .build();
         return new ResponseEntity<>(responseMessage, HttpStatus.NOT_FOUND);
     }

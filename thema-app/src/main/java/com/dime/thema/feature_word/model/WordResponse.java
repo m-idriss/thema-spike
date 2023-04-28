@@ -5,13 +5,11 @@ import lombok.Setter;
 
 import java.util.List;
 
-@Getter
 @Setter
+@Getter
 public class WordResponse {
 
     private String word;
 
     private List<String> synonyms;
-
-    private List<String> examples;
 }

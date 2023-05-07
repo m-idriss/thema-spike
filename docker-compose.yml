@@ -1,52 +1,52 @@
-# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
 version: '3'
 
-#Define services
+# Define services
 services:
 
-  #PostgreSQL Database for the application
+  # PostgreSQL Database for the application
   thema-postgres:
     image: "postgres:10.4-alpine"
     restart: always
     container_name: thema-postgres
-    #Volume mounted for database for the storage
+    # Mount a volume for persistent data storage
     volumes:
       - thema-data:/var/lib/postgresql/data
     ports:
-      - '${DB_PORT}:5432' # Forward the exposed port ${DB_PORT} on the container to port 5432 on the host machine
-
-    #Environment variable for DB name, user and password
+      - '5432:5432'
+    # Set environment variables for the database
     environment:
-      - POSTGRES_DB=${POSTGRESQL_DB_NAME}
-      - POSTGRES_USER=${POSTGRESQL_DB_USER}
-      - POSTGRES_PASSWORD=${POSTGRESQL_DB_PASSWORD}
+      POSTGRES_DB: thema
+      POSTGRES_USER: thema
+      POSTGRES_PASSWORD: thema
 
-  #Back-end Spring Boot Application
+  # Back-end Spring Boot Application
   thema-app:
-    #The docker file in thema-app build the jar and provides the docker image with the following name.
+    # Build the Docker image from the Dockerfile in the thema-app directory
     build: ./thema-app
     container_name: thema-app
-
-    #Environment variables for Spring Boot Application.
+    # Set environment variables for the Spring Boot application
     environment:
-      - DB_SERVER=thema-postgres
-      - POSTGRES_DB=${POSTGRESQL_DB_NAME}
-      - POSTGRES_USER=${POSTGRESQL_DB_USER}
-      - POSTGRES_PASSWORD=${POSTGRESQL_DB_PASSWORD}
+      DB_SERVER: thema-postgres
+      POSTGRES_DB: thema
+      POSTGRES_USER: thema
+      POSTGRES_PASSWORD: thema
     ports:
-      - '${SPRING_PORT}:8080' # Forward the exposed port ${SPRING_PORT} on the container to port 8080 on the host machine
-    links:
+      - '8080:8080'
+    # Connect to the thema-postgres container
+    depends_on:
       - thema-postgres
 
-  #Fron-end Angular Application
+  # Front-end Angular Application
   thema-front:
+    # Build the Docker image from the Dockerfile in the thema-front directory
     build: ./thema-front
     container_name: thema-front
     ports:
-      - '${ANGULAR_PORT}:80'
-    links:
+      - '4200:80'
+    # Connect to the thema-app container
+    depends_on:
       - thema-app
 
-#Volumes for DB data
+# Define volumes for persistent data storage
 volumes:
   thema-data:

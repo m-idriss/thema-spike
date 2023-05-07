@@ -1,6 +1,20 @@
 spring:
   jpa:
     open-in-view: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/thema #url: jdbc:postgresql://<host>:<port>/<dbname>
+    username: thema
+    password: thema
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
   application:
     name: Thema Application
   output:

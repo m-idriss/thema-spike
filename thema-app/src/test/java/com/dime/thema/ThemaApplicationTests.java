@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 
+import java.net.UnknownHostException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
@@ -19,7 +21,7 @@ class ThemaApplicationTest {
 
     @Test
     @DisplayName("Test main")
-    void testMain() {
+    void testMain() throws UnknownHostException {
         ThemaApplication.main(new String[]{});
         Assertions.assertTrue(true);
     }

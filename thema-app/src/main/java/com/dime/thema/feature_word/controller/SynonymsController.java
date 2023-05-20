@@ -21,6 +21,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/rest/synonyms")
+//@Secured("ROLE_USER")
 public class SynonymsController {
     @Autowired
     private ModelMapper modelMapper;

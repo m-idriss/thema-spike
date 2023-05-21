@@ -11,6 +11,8 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
+  profiles:
+    active: development
   datasource:
     url: jdbc:postgresql://localhost:5432/thema #url: jdbc:postgresql://<host>:<port>/<dbname>
     username: thema
@@ -29,8 +31,8 @@ logging:
   level:
     root: error
     com.dime: info
-    org.springframework.web: debug
-    org.hibernate: error
+    org.springframework.web: info
+    org.hibernate: info
     liquibase: info
 # Specify the path of the OpenAPI documentation
 springdoc:

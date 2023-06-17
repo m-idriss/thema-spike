@@ -1,4 +1,4 @@
-package com.dime.thema.feature_word.config;
+package com.dime.thema.config;
 
 
 import org.jetbrains.annotations.NotNull;

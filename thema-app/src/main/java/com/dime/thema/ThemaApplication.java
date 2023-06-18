@@ -36,7 +36,7 @@ public class ThemaApplication {
                         \t Access URLs:
                         \t - Local: \t\t{}://localhost:{}
                         \t - External: \t{}://{}:{}
-                        \t Sawgger UI: \t{}://localhost:{}/swagger-ui.html
+                        \t Swagger UI: \t{}://localhost:{}/swagger-ui.html
                         \t Profile(s): \t{}
                          ----------------------------------------------------------
                         """,

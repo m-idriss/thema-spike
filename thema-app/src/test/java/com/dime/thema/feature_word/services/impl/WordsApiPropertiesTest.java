@@ -1,5 +1,6 @@
 package com.dime.thema.feature_word.services.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @EnableConfigurationProperties(value = WordsApiProperties.class)
 @TestPropertySource("classpath:private/wordsapi.properties")
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+@Slf4j
 class WordsApiPropertiesTest {
 
     @Autowired
